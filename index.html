@@ -9,32 +9,71 @@
 <body>
     <div class="calendar-container">
         <div class="header">
+            <div class="month-name"></div>
             <button id="prev-month">&lt;</button>
             <h1 id="month-year">Month Year</h1>
             <button id="next-month">&gt;</button>
         </div>
-        <div id="calendar"></div>
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th>일</th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th>토</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 날짜가 여기에 동적으로 추가됩니다. -->
+            </tbody>
+        </table>
     </div>
     <div id="tasks-container">
-        <div id="tasks-popup" class="popup">
+        <div class="popup" id="task-popup">
             <div class="popup-content">
-                <span class="close-btn">&times;</span>
-                <h3 id="popup-title">할 일 목록</h3>
-                <ul id="tasks-list"></ul>
-                <div id="task-input-form">
-                    <label for="task-person">누구의 일정인가요?</label>
+                <span class="close-btn" onclick="closePopup()">×</span>
+                <h2 id="popup-title">일정 추가</h2>
+                <ul id="tasks-list" class="task-list">
+                    <!-- 각 일정 항목 -->
+                </ul>
+                <form id="task-input-form">
+                    <label for="task-person">일정 담당자</label>
                     <select id="task-person">
                         <option value="은지&상원">은지&상원</option>
                         <option value="은지">은지</option>
                         <option value="상원">상원</option>
                     </select>
-                    <label for="task-text">일정을 입력하세요:</label>
-                    <input type="text" id="task-text">
-                    <button id="add-task">일정 추가하기</button>
-                </div>
+                    <label for="task-text">일정 내용</label>
+                    <textarea id="task-text" rows="4"></textarea>
+                    <button type="button" id="add-task" onclick="addTask()">일정 추가</button>
+                </form>
             </div>
         </div>
     </div>
+    <div class="priority-container">
+        <h2>이달의 우선순위</h2>
+        <table id="priority-table">
+            <thead>
+                <tr>
+                    <th>우선순위</th>
+                    <th>할 일</th>
+                    <th>완료 여부</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="priority-list">
+                <!-- 할 일 목록이 여기에 추가됨 -->
+            </tbody>
+        </table>
+        <div id="priority-input-section">
+            <input type="text" id="priority-text" placeholder="우선순위 할 일을 입력하세요" maxlength="30">
+            <button id="add-priority">우선순위 추가</button>
+        </div>
+    </div>
+    <div id="toast" class="toast">더 이상 입력이 불가합니다</div> <!-- Move toast here -->
     <script src="app.js"></script>
 </body>
 </html>
